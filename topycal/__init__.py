@@ -1,3 +1,10 @@
+from __future__ import print_function
+from time import time
+
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
+from sklearn.decomposition import NMF, LatentDirichletAllocation
+
 import glob, os.path, codecs, json
 from collections import Sequence
 DEFAULT_TOPIC_MODEL = 'nmf'
