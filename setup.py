@@ -8,6 +8,6 @@ setup(
   author_email = 'brian@beruna.org',
   url = 'https://github.com/brianrusso/topycal', # use the URL to the github repo
   download_url = 'https://github.com/brianrusso/topycal/archive/0.1.tar.gz', # I'll explain this in a second
-  keywords = ['testing', 'logging', 'example'], # arbitrary keywords
+  keywords = ['topic modelling', 'topic', 'machine learning', 'nmf', 'lda', 'sklearn'], # arbitrary keywords
   classifiers = [],
 )
