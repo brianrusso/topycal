@@ -3,10 +3,8 @@ Python Topic Modelling Framework
 
 Topycal is a topic modelling framework that (currently) exposes the SKLearn NMF and LDA models in an easy to use way.
 
-del = Topycal()
-
 1. Start with an array of simple documents. These are not very interesting of course.. just an example.
-
+```python
 mydocs = [
   {"doc_id":1,"text":"My mom drove me to school fifteen minutes late on Tuesday."},
   {"doc_id":2,"text":"The girl wore her hair in two braids, tied with two blue bows."},
@@ -25,19 +23,23 @@ mydocs = [
   {"doc_id":15,"text":"Your mom is so nice she gave me a ride home today."},
   {"doc_id":16,"text":"I fell in the mud when I was walking home from school today."},
   {"doc_id":17,"text":"This dinner is so delicious I can't stop eating."}]
-
-mydocs = [{'title': 'Mr Smith watches TV', 'text': 'A heartwarming tale about Bob Smith watching television on a Sunday afternoon'},
-          {'title': 'Joe plays tennis', 'text': 'A riveting story of a man who learns to play tennis and satisfy his dreams'}]
+```
 
 2. Instantiate + pass in the array
-topicmodel = Topycal(mydocs, 'text')
+```python
+topicmodel = Topycal(mydocs, "text")
+```
 
 3. Generate the topic model, LDA in this case.
+```python
 topicmodel.model_with_lda()
+```
 
 4. Now you can just easily get topics assigned for each document
+```python
 topicmodel[5]
 
 {'doc_id': 6,
  'text': 'My shoes are blue with yellow stripes and green stars on the front.',
  'topics': [9]}
+```
