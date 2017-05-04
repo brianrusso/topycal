@@ -1,4 +1,4 @@
-import glob, os.path, codecs, tqdm, json
+import glob, os.path, codecs, json
 from collections import Sequence
 DEFAULT_TOPIC_MODEL = 'nmf'
 
@@ -11,7 +11,6 @@ class Topycal(Sequence):
         self.num_features = num_features
         self.topic_threshold = topic_threshold
         self.drop_word_len = 4 # will internally drop words shorter than this. i.e. this is the min
-        #self.ngram_range = (2, 50) # (min,max) where (min <= valid <= max)
         self.docs = document_array
         self.content_key = content_key
         self.naked_docs = self.get_naked_docs(self.docs, self.content_key)
@@ -22,7 +21,6 @@ class Topycal(Sequence):
         
         # output
         self.topic_key = topic_key
-
 
     def model_with_lda(self):
         # Raw Count vectors
