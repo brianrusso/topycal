@@ -70,7 +70,7 @@ model.get_topic_for_doc(3, force_topicid=True)
 => (0, 0.4285221719166587)
 ```
 
-9. If you set a threshold you can get the thresholded' topic vectors for a given document. IF you set it to 0 you get all the vectors.
+9. If you set a threshold you can get the thresholded' topic vectors for a given document. If you set it to 0 you get all the vectors.
 ```python
 model.get_topic_for_doc(3, threshold=0.05, force_topicid=True)
 => [(0, 0.4285221719166587), (1, 0.091668549635229787)]
