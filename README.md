@@ -31,7 +31,7 @@ mydocs = [
 
 2. Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words.
 ```python
-model = TopycalNMF(mydocs, doc_key='doc_id', num_topics=3, num_topic_words=5, content_key='text')
+model = TopycalNMF(mydocs, num_topics=3, num_topic_words=5, content_key='text')
 ```
 
 3. Initialize the topic model
@@ -70,7 +70,7 @@ model.get_topic_for_doc(3, force_topicid=True)
 => (0, 0.4285221719166587)
 ```
 
-9. Finally if you set a threshold you can get the entire topic vector for a given document. IF you set it to 0 you get all the vectors.
+9. If you set a threshold you can get the entire topic vector for a given document. IF you set it to 0 you get all the vectors.
 ```python
 model.get_topic_for_doc(3, threshold=0.05, force_topicid=True)
 => [(0, 0.4285221719166587), (1, 0.091668549635229787)]
@@ -80,4 +80,18 @@ model.get_topic_for_doc(3, threshold=0)
 [('Night Life', 0.4285221719166587),
  ('Wild Animals', 0.091668549635229787),
  ('Schooltime', 0.0022845521247407997)]
+```
+
+10. Finally, if you set a topic_key, you will change the sequence behaviour to output the original document with the topic in whatever key you define.
+```python
+model.set_topic_key("topics")
+model[3]
+=>
+{'doc_id': 8,
+ 'text': "I was so thirsty at the opera, I couldn't wait to get a glass of wine.",
+ 'topics': ('Night Life', 0.4285221719166587)}
+# Disable by setting topic_key to None
+model.set_topic_key(None)
+model[3]
+=> ('Night Life', 0.4285221719166587)
 ```

@@ -9,19 +9,20 @@ from .exceptions import ModelNotInitialized
 
 class TopycalBase(Sequence):
     # array of dictionaries/simple objects
-    # Doc key is how we reference things.. content key is what we want to model on.
-    def __init__(self, document_array, doc_key, content_key, num_topics=10, num_topic_words = 20, num_features = 1000, topic_key='topics', topic_threshold=0.01):
+    def __init__(self, doc_array, content_key, num_topics=10, num_topic_words = 20, num_features = 1000, topic_key=None, topic_threshold=0.01, drop_word_len=4):
         
         self.num_topics = num_topics
         self.num_topic_words = num_topic_words
         self.num_features = num_features
         self.topic_threshold = topic_threshold
-        self.drop_word_len = 4 # will internally drop words shorter than this. i.e. this is the min
-        self.docs = document_array
+        self.drop_word_len = drop_word_len # will internally drop words shorter than this. i.e. this is the min
+        self.docs = doc_array
         
-        # Where we find stuff...
+        # The actual content of the document
         self.content_key = content_key
-        self.doc_key = doc_key
+        
+        # dictionary where key is the original document_dict key, and value is the array position
+        #self.doc_idx = {}
 
         # initialize 
         # could make this lazy?
@@ -38,15 +39,27 @@ class TopycalBase(Sequence):
     def initialize(self):
         raise Exception("You are trying to initialize the base class. Please initialize a child for a specific topic model")  
 
+        
     def __len__(self):
         return len(self.docs)
     
     # Returns a tuple of the top topic / score
     def __getitem__(self, index):
         try:
-            return self.get_topic_for_doc(index)
+            topic_info = self.get_topic_for_doc(index)
         except TypeError:
             raise ModelNotInitialized("Model is not initialized, call <instance>.initialize()")
+
+        if self.topic_key: # if key is defined
+            obj = self.docs[index].copy()
+            if self.topic_key in obj:
+                raise Exception("Topic key conflicts with existing key in document")
+            else:
+                obj[self.topic_key] = topic_info
+                response = obj
+        else:
+            response = topic_info
+        return response
     
     # Get the top topic/score (this is the default for the iterator)
     # Or if you specify threshold, it will return a vector of tuples
@@ -79,7 +92,7 @@ class TopycalBase(Sequence):
             else:
                 topic = self._resolve_topic(max_score_idx)
             return (topic, scores[max_score_idx])
-    
+
     # Resolve a topic ID to a name (if topic_names is set)
     # Else just return the topic ID (no warning)
     def _resolve_topic(self, topic_id):
@@ -108,6 +121,9 @@ class TopycalBase(Sequence):
     # e.g. pos 0, -> topic 0, pos 3 -> topic 3, etc..
     def set_topic_names(self, topic_names):
         self.topic_names = topic_names
+        
+    def set_topic_key(self, topic_key):
+        self.topic_key = topic_key
         
     def get_topics(self, model, feature_names, n_top_words):
         topics = {}
