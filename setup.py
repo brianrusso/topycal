@@ -3,6 +3,7 @@ setup(
   name = 'topycal',
   packages = ['topycal'], # this must be the same as the name above
   version = '0.1',
+  install_requires=["numpy", "sklearn"],
   description = 'Topic modelling framework',
   author = 'Brian Russo',
   author_email = 'brian@beruna.org',
