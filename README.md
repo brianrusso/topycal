@@ -1,5 +1,14 @@
 # topycal
-Python Topic Modelling Framework
+Python Topic Modelling Framework. Uses Sklearn LDA/NMF implementations.
+
+## Quickstart
+```python
+from topycal import TopycalLDA, TopycalNMF
+mydocs = [array of docs]
+tm = TopycalLDA(mydocs, doc_key='doc_id', num_topics=3, num_topic_words=5, content_key='text')
+tm.initialize()
+tm[3] <- get topic info for document 3
+```
 
 Topycal is a topic modelling framework that (currently) exposes the SKLearn NMF and LDA models in an easy to use way.
 
