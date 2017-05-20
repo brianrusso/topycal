@@ -38,7 +38,7 @@ mydocs = [
   
 ```
 
-2. Import & Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words. The only manadatory arguments are the document list and the content_key of which text to analyze
+2. Import & Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words. The only mandatory arguments are the document list and the content_key. 
 ```python
 import topycal
 model = topycal.TopycalNMF(mydocs, num_topics=3, num_topic_words=5, content_key='text')
