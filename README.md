@@ -2,6 +2,7 @@
 
 Topycal is a topic modelling framework that (currently) exposes the SKLearn NMF and LDA models in an easy to use way.
 
+You can pip install it for python 3 (pip3 install topycal)
 
 1. Start with an array of simple documents. These are not very interesting of course.. just an example.
 ```python
