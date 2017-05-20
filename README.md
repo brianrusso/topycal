@@ -1,7 +1,7 @@
 # topycal
 
 Do you want to apply topic modelling to your data but don't know what a text vectorizer or a topic distribution matrix is?
-Do you simply want to throw a list of simple documents/dictionaries against one and enrich your data with the topic clusters?
+Do you simply want to throw a list of simple documents/dictionaries against a topic model and enrich your data with the topic clusters?
 
 Topycal is for you and a simple pip3 install topycal away!
 
@@ -38,7 +38,7 @@ mydocs = [
   
 ```
 
-2. Import & Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words.
+2. Import & Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words. The only manadatory arguments are the document list and the content_key of which text to analyze
 ```python
 import topycal
 model = topycal.TopycalNMF(mydocs, num_topics=3, num_topic_words=5, content_key='text')
