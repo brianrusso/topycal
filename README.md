@@ -38,9 +38,10 @@ mydocs = [
   
 ```
 
-2. Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words.
+2. Import & Instantiate a model (you could also do TopycalLDA) + pass in the docs. Since this is a tiny corpus, we select 3 topics and 5 topic words.
 ```python
-model = TopycalNMF(mydocs, num_topics=3, num_topic_words=5, content_key='text')
+import topycal
+model = topycal.TopycalNMF(mydocs, num_topics=3, num_topic_words=5, content_key='text')
 ```
 
 3. Initialize the topic model
