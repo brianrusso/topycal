@@ -8,7 +8,9 @@ Topycal is for you and a simple pip3 install topycal away!
 It is a convenient wrapper against the excellent NMF/LDA implementations in sklearn. If you want a more sophisticated interaction with topic modelling; I suggest you checkout the excellent gensim package or the underlying sklearn functions used here.
 
 0. Install
-```pip3 install topycal```
+```
+pip3 install topycal
+```
 
 1. Start with an array of simple documents. These are not very interesting of course.. just an example.
 ```python
