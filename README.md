@@ -1,8 +1,11 @@
 # topycal
 
-Topycal is a topic modelling framework that (currently) exposes the SKLearn NMF and LDA models in an easy to use way.
+Do you want to apply topic modelling to your data but don't know what a text vectorizer or a topic distribution matrix is?
+Do you simply want to throw a list of simple documents/dictionaries against one and enrich your data with the topic clusters?
 
-You can pip install it for python 3 (pip3 install topycal)
+Topycal is for you and a simple pip3 install topycal away!
+
+It is a convenient wrapper against the excellent NMF/LDA implementations in sklearn. If you want a more sophisticated interaction with topic modelling; I suggest you checkout the excellent gensim package or the underlying sklearn functions used here.
 
 1. Start with an array of simple documents. These are not very interesting of course.. just an example.
 ```python
