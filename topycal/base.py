@@ -1,3 +1,6 @@
+import random
+from pyLDAvis.sklearn import prepare as skldaprep
+import pyLDAvis
 import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
 from sklearn.decomposition import NMF, LatentDirichletAllocation
@@ -37,8 +40,11 @@ class TopycalBase(Sequence):
         self.topic_key = topic_key
 
     def initialize(self):
-        raise Exception("You are trying to initialize the base class. Please initialize a child for a specific topic model")  
+        raise Exception("You are trying to initialize the base class. Please initialize a child for a specific topic model")
 
+    def pyldavis(self):
+        return skldaprep(self.model, self.vectors, self.vectorizer)
+   
         
     def __len__(self):
         return len(self.docs)
