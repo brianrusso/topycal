@@ -11,6 +11,8 @@ class TopycalLDA(TopycalBase):
                                 learning_offset=50.,
                                 random_state=0)
         lda.fit(tf_vectors)
+        self.vectors = tf_vectors
+        self.vectorizer = tf_vectorizer
         tf_feature_names = tf_vectorizer.get_feature_names()
         self.topics = self.get_topics(lda, tf_feature_names, self.num_topic_words)
         self.doc_topic_distrib = lda.transform(tf_vectors)
